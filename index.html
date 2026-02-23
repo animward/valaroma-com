@@ -29,17 +29,17 @@
   --void:         #02020a;
   --void-warm:    #07060f;
 
-  --warm:         #e8d4a0;
-  --warm-dim:     #8a7450;
-  --warm-faint:   #3a3020;
-  --warm-glow:    rgba(232, 212, 160, 0.15);
-  --warm-glow-hi: rgba(232, 212, 160, 0.35);
+  --warm:         #76b900;
+  --warm-dim:     #4a7300;
+  --warm-faint:   #1a2a00;
+  --warm-glow:    rgba(118, 185, 0, 0.15);
+  --warm-glow-hi: rgba(118, 185, 0, 0.35);
 
   --violet:       rgba(90, 0, 160, 0.12);
   --violet-bright:rgba(120, 20, 220, 0.06);
 
-  --border:       rgba(232, 212, 160, 0.07);
-  --border-soft:  rgba(232, 212, 160, 0.12);
+  --border:       rgba(118, 185, 0, 0.07);
+  --border-soft:  rgba(118, 185, 0, 0.12);
 
   --font-title:   'Cinzel', 'Palatino Linotype', serif;
   --font-body:    'IM Fell English', Georgia, serif;
@@ -89,7 +89,7 @@ body {
   position: fixed;
   left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(232,212,160,0.04) 20%, rgba(232,212,160,0.08) 50%, rgba(232,212,160,0.04) 80%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(118,185,0,0.04) 20%, rgba(118,185,0,0.08) 50%, rgba(118,185,0,0.04) 80%, transparent 100%);
   animation: scan-drift 12s linear infinite;
   pointer-events: none;
   z-index: 2;
@@ -151,15 +151,15 @@ body {
 @keyframes breathe {
   0%,100% {
     text-shadow:
-      0 0 30px rgba(232,212,160,0.12),
-      0 0 80px rgba(232,212,160,0.06),
+      0 0 30px rgba(118,185,0,0.12),
+      0 0 80px rgba(118,185,0,0.06),
       0 0 160px rgba(90,0,160,0.04);
     letter-spacing: 0.35em;
   }
   50% {
     text-shadow:
-      0 0 50px rgba(232,212,160,0.28),
-      0 0 120px rgba(232,212,160,0.12),
+      0 0 50px rgba(118,185,0,0.28),
+      0 0 120px rgba(118,185,0,0.12),
       0 0 220px rgba(90,0,160,0.08);
     letter-spacing: 0.38em;
   }
@@ -199,8 +199,8 @@ body {
 }
 
 @keyframes logo-breathe {
-  0%,100% { opacity: 0.82; filter: brightness(0) invert(1) sepia(0.25) hue-rotate(8deg) drop-shadow(0 0 20px rgba(232,212,160,0.1)); }
-  50%      { opacity: 1;    filter: brightness(0) invert(1) sepia(0.35) hue-rotate(8deg) drop-shadow(0 0 40px rgba(232,212,160,0.25)); }
+  0%,100% { opacity: 0.82; filter: brightness(0) invert(1) sepia(0.25) hue-rotate(8deg) drop-shadow(0 0 20px rgba(118,185,0,0.1)); }
+  50%      { opacity: 1;    filter: brightness(0) invert(1) sepia(0.35) hue-rotate(8deg) drop-shadow(0 0 40px rgba(118,185,0,0.25)); }
 }
 
 .scroll-cue {
