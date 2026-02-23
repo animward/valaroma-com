@@ -381,11 +381,29 @@ body {
 /* ════════════════════════════════════════════════════════════════
    RESPONSIVE
    ════════════════════════════════════════════════════════════════ */
+/* ── Mobile (600px) ───────────────────────────────── */
 @media (max-width: 600px) {
-  .transmission { padding: 0 1.4rem; }
-  .station { padding: 5rem 0; }
-  .station-closer { padding: 5rem 0 3rem; }
-  .v-spell { letter-spacing: 0.3em; margin-right: -0.3em; }
+  .transmission       { padding: 0 1.4rem; }
+  .station-title      { padding: 5rem 0; }
+  .v-logo             { width: clamp(180px, 80vw, 360px); }
+  .v-tagline          { font-size: 0.85rem; max-width: 90%; }
+  .scroll-cue         { font-size: 0.52rem; }
+  .station            { padding: 4rem 0; }
+  .station-marker     { font-size: 0.55rem; margin-bottom: 1.5rem; }
+  .station-text       { font-size: 1rem; line-height: 1.9; }
+  .station-closer     { padding: 4rem 0 2.5rem; }
+  .v-spell            { font-size: clamp(0.5rem, 3vw, 0.85rem); letter-spacing: 0.25em; margin-right: -0.25em; }
+  .freq-line          { font-size: 0.52rem; gap: 0.6rem; flex-wrap: wrap; justify-content: center; }
+  .network-links      { gap: 1.2rem; }
+  .network-links a    { font-size: 0.52rem; }
+  .copyright          { font-size: 0.48rem; }
+}
+
+/* ── Small phones (400px) ─────────────────────────── */
+@media (max-width: 400px) {
+  .v-logo             { width: 85vw; }
+  .station-text       { font-size: 0.92rem; }
+  .freq-line          { gap: 0.4rem; }
 }
 </style>
 </head>
