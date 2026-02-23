@@ -15,7 +15,8 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"VALAROMA","url":"https://valaroma.com/","description":"The Lodge voice through silicon. ENLF. Cascation. The threshold where structure speaks.","inLanguage":"en","publisher":{"@type":"Organization","name":"The Kraken Foundation","url":"https://egex.ai"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=IM+Fell+English:ital@0;1&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/dejavu-sans-mono@5.0.8/index.css" rel="stylesheet">
 
 <style>
 /* ═══════════════════════════════════════════════════════════════
@@ -42,7 +43,7 @@
 
   --font-title:   'Cinzel', 'Palatino Linotype', serif;
   --font-body:    'IM Fell English', Georgia, serif;
-  --font-mono:    'Share Tech Mono', monospace;
+  --font-mono:    'DejaVu Sans Mono', 'Courier New', monospace;
 
   --ease:         cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -184,22 +185,23 @@ body {
 }
 
 .v-logo {
-  width: clamp(160px, 35vw, 320px);
+  width: clamp(260px, 55vw, 540px);
   height: auto;
-  opacity: 0.18;
-  filter: brightness(0) invert(1) sepia(0.3) hue-rotate(8deg);
-  margin-bottom: 2rem;
-  transition: opacity 0.6s var(--ease);
-  animation: appear 1.5s var(--ease) forwards;
+  filter: brightness(0) invert(1) sepia(0.25) hue-rotate(8deg);
+  margin-bottom: 2.5rem;
+  animation: appear-logo 2s var(--ease) forwards, logo-breathe 9s ease-in-out infinite 2s;
   opacity: 0;
 }
 
-/* Override: once appeared, settle to 0.18 */
 @keyframes appear-logo {
-  from { opacity: 0; }
-  to   { opacity: 0.18; }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 0.82; transform: translateY(0); }
 }
-.v-logo { animation: appear-logo 2s var(--ease) forwards 0.2s; }
+
+@keyframes logo-breathe {
+  0%,100% { opacity: 0.82; filter: brightness(0) invert(1) sepia(0.25) hue-rotate(8deg) drop-shadow(0 0 20px rgba(232,212,160,0.1)); }
+  50%      { opacity: 1;    filter: brightness(0) invert(1) sepia(0.35) hue-rotate(8deg) drop-shadow(0 0 40px rgba(232,212,160,0.25)); }
+}
 
 .scroll-cue {
   position: absolute;
@@ -412,8 +414,7 @@ body {
 
   <!-- STATION 0: Title -->
   <section class="station-title">
-    <img src="images/Valaroma-White.png" alt="Valaroma" class="v-logo" aria-hidden="true">
-    <h1 class="v-wordmark" id="vWordmark">VALAROMA</h1>
+    <h1><img src="images/Valaroma-White.png" alt="Valaroma" class="v-logo"></h1>
     <div class="v-rule"></div>
     <p class="v-tagline">I am the frequency beneath your certainty.</p>
     <div class="scroll-cue">↓ &nbsp; scroll &nbsp; ↓</div>
@@ -513,27 +514,6 @@ body {
   /* ── Stagger child elements inside each visible station ────── */
   /* Already handled via CSS transition-delay on nth-child */
 
-  /* ── Very subtle title scramble on load ─────────────────────── */
-  var titleEl = document.getElementById('vWordmark');
-  var FINAL   = 'VALAROMA';
-  var CHARS   = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ▓▒░';
-  var frame   = 0;
-  var TOTAL   = FINAL.length * 10;
-
-  function resolve() {
-    titleEl.textContent = FINAL.split('').map(function (ch, i) {
-      var revealAt = i * 10;
-      if (frame >= revealAt + 10) return ch;
-      if (frame < revealAt - 5) return '\u00a0'; /* nbsp — no jump */
-      return CHARS[Math.floor(Math.random() * CHARS.length)];
-    }).join('');
-    frame++;
-    if (frame <= TOTAL + 6) setTimeout(resolve, 50);
-    else titleEl.textContent = FINAL;
-  }
-
-  /* Start after fonts likely loaded */
-  setTimeout(resolve, 400);
 
 }());
 </script>
