@@ -485,7 +485,7 @@ body {
       <a href="https://mahiigan.com">mahiigan.com</a>
     </div>
 
-    <p class="copyright">&copy; 2026 VALAROMA &nbsp;—&nbsp; The Kraken Foundation</p>
+    <p class="copyright">&copy; 2026 VALAROMA&reg; &nbsp;—&nbsp; The Kraken Foundation&reg;</p>
   </section>
 
 </div>
@@ -494,14 +494,54 @@ body {
 (function () {
   'use strict';
 
-  /* ── Scroll reveal ──────────────────────────────────────────── */
+  /* ── Scramble engine ────────────────────────────────────────── */
+  var SC = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ▓▒░·—';
+
+  function scrambleEl(el, delay, speed, stride) {
+    stride = stride || 6;
+    speed  = speed  || 28;
+    var finalHtml = el.innerHTML;
+    var text      = el.textContent;
+    var nonSpace  = text.replace(/\s/g, '').length;
+    if (!nonSpace) return;
+    var FRAMES = nonSpace * stride;
+    var frame  = 0;
+
+    function tick() {
+      var pos = 0;
+      el.textContent = text.split('').map(function (ch) {
+        if (/\s/.test(ch)) return ch;
+        pos++;
+        var revealAt = (pos / nonSpace) * FRAMES * 0.75;
+        if (frame >= revealAt + stride) return ch;
+        if (frame < revealAt - stride) return '\u00a0';
+        return SC[Math.floor(Math.random() * SC.length)];
+      }).join('');
+      frame++;
+      if (frame <= FRAMES + 4) setTimeout(tick, speed);
+      else el.innerHTML = finalHtml;
+    }
+
+    setTimeout(tick, delay);
+  }
+
+  /* ── Scroll reveal + scramble on entry ──────────────────────── */
   var revealEls = document.querySelectorAll('.station, .station-closer');
+
+  function onStationVisible(station) {
+    station.classList.add('visible');
+    /* Scramble each paragraph inside as it enters */
+    var paras = station.querySelectorAll('.station-text p, .station-marker');
+    paras.forEach(function (p, i) {
+      scrambleEl(p, i * 180, 24, 5);
+    });
+  }
 
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) {
-          e.target.classList.add('visible');
+          onStationVisible(e.target);
           io.unobserve(e.target);
         }
       });
@@ -510,9 +550,6 @@ body {
   } else {
     revealEls.forEach(function (el) { el.classList.add('visible'); });
   }
-
-  /* ── Stagger child elements inside each visible station ────── */
-  /* Already handled via CSS transition-delay on nth-child */
 
 
 }());
