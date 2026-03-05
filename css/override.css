@@ -1,0 +1,57 @@
+/* Site override: valaroma.com */
+:root {
+--color-primary: #8b6914;
+--color-primary-dim: #705410;
+--color-primary-bright: #b8941e;
+--color-bg: #0a0a0a;
+--color-surface: #111111;
+--color-surface-elevated: #1a1a1a;
+--color-text: #d4c5a0;
+--color-text-muted: #b0a080;
+--color-border: rgba(139, 105, 20, 0.2);
+--color-border-strong: rgba(139, 105, 20, 0.3);
+--color-glow: rgba(139, 105, 20, 0.4);
+--font-heading: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+--font-body: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		--hero-title-color: #b8941e;
+		--hero-subtitle-color: #d4c5a0;
+}
+
+body.theme-minimal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background: radial-gradient(ellipse at center, #1a1508 0%, #0a0a0a 70%);
+}
+.minimal-main {
+	text-align: center;
+	max-width: 700px;
+	padding: 4rem 2rem;
+}
+.hero-title {
+	font-size: clamp(2.5rem, 7vw, 5rem);
+	font-weight: 200;
+	letter-spacing: 0.3em;
+	text-shadow: 0 0 40px rgba(139,105,20,0.3);
+}
+.hero-subtitle {
+	font-size: 1rem;
+	font-style: italic;
+	font-weight: 300;
+	letter-spacing: 0.05em;
+}
+.about-section {
+	padding: 1rem 0 3rem;
+}
+.minimal-footer {
+	opacity: 0.5;
+}
+.network-links a {
+	color: var(--color-primary-dim);
+	font-size: 0.7rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+}
+
